@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C/DTD XHTLM 1.0 strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://wwww.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="crafty.js"></script>
+<script type ="text/javascript" src="Box2dweb-2.1.a.3.js"></script>
+<script type = "text/javascript" src = "Box2d.js"></script>
+<title>knights and ninjas</title>
+</head>
+<body>
+<div id="game"></div>
+<script>
+	window.onload = function()
+{
+	Crafty.init(400, 320, document. getElementById('game'));
+	Crafty.scene("TitleScene, function()
+{
+		Crafty.background("#000");
+		Crafty.sprite("banner.png",
+		{introbanner:[0,0,320,31]});
+		var banner=Crafty.e("2D, DOM, introbanner"),
+		banner.x=30;
+		banner.y=200;
+		
+});
+	banner.bind('keyDown', function(e)
+{
+	if(e.key=crafty.keys.RIGHT_ARROW)
+	{
+		Crafty.enterScene("GameScene");
+		}
+	}
+	);
+});
+	Crafty.scene("GameScene", function()
+{
+	Crafty.background("#F0F");
+	//Gravity x, Gravity y, Pixel to meter, speed up enable
+	Crafty.box2D.init(0, 10, 30, true )
+	var wall1=Crafty.e("2D, Canvas, Box2D, Color");
+	wall1.color("green").attr({x: 13, y: 100, w: 220, h: 12});
+	wall1.box2d({ bodyType: 'static' });
+	//Must be after positioning
+	var wall2=Crafty.e("2D, Canvas, Box2D, Color");
+	wall2.color("green").attr({x: 140, y: 200, w: 220, h: 12});
+	wall2.box2d({ bodyType: 'static' });
+	Crafty.sprite("Knight2.png",
+	{knight:[0,0,30,32]});
+	var knight=Crafty.e("2D, Canvas, knight, Box2D");
+	knight.x=20;
+	knight.y=200;
+	knight.box2d({ bodyType: 'dynamic'});
+	crafty.e("2D, Canvas, Color, Box2D").
+	attr({x: 1, y: 1, w: 10, h: 320} ).
+	box2d({ bodyType: 'static' });
+	Crafty.e("2D, Canvas, Color, Box2D").
+	attr({x: 390, y: 1, w: 10, h: 320}).
+	box2d({ bodyType: 'static']);
+	Crafty.e("2D, Canvas, Color, Box2D").
+	attr({x: 1, y: 310, w: 400, h: 10}).
+	box2d({ bodyType: 'static' });
+</script>
+
+</body>
